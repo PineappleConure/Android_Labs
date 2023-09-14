@@ -1,8 +1,10 @@
 package algonquin.cst2335.wang0467.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import android.widget.Toast;
 
 import android.os.Bundle;
 import android.view.View;
@@ -50,11 +52,50 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        model.isSelected.observe(this, selected ->
+        {
+            variableBinding.myCheckbox.setChecked(selected);
+            variableBinding.mySwitch.setChecked(selected);
+            variableBinding.myRadioButton.setChecked(selected);
+        });
 
+        variableBinding.myCheckbox.setOnCheckedChangeListener((btn, isChecked) -> {
+//            model.isSelected.postValue(isChecked);
+            if (isChecked) {
+                variableBinding.mySwitch.setChecked(false);
+                variableBinding.myRadioButton.setChecked(false);
+            }
+            Toast.makeText(this, "Checkbox value is now: " + isChecked, Toast.LENGTH_SHORT).show();
+        });
 
+        variableBinding.mySwitch.setOnCheckedChangeListener((btn, isChecked) -> {
+//            model.isSelected.postValue(isChecked);
+            if (isChecked) {
+                variableBinding.myCheckbox.setChecked(false);
+                variableBinding.myRadioButton.setChecked(false);
+            }
+            Toast.makeText(this, "Switch value is now: " + isChecked, Toast.LENGTH_SHORT).show();
+        });
 
+        variableBinding.myRadioButton.setOnCheckedChangeListener((btn, isChecked) -> {
+//            model.isSelected.postValue(isChecked);
+            if (isChecked) {
+                variableBinding.myCheckbox.setChecked(false);
+                variableBinding.mySwitch.setChecked(false);
+            }
+            Toast.makeText(this, "RadioButton value is now: " + isChecked, Toast.LENGTH_SHORT).show();
+        });
 
+//        variableBinding.logo.setOnClickListener(view -> {
+////            Toast.makeText(this, "Logo clicked!", Toast.LENGTH_SHORT).show();
+//        });
 
+        variableBinding.myimagebutton.setOnClickListener(view ->
+        {
+            int width = view.getWidth();
+            int height = view.getHeight();
+            Toast.makeText(this, "The width = " + width + " and height = " + height, Toast.LENGTH_SHORT).show();
+        });
 
     }
 

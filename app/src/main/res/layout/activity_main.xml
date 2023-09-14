@@ -38,11 +38,27 @@
         android:id="@+id/mySwitch"
         android:text="@string/switch_button_message"/>
 
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:src="@drawable/logo"-->
+<!--        android:id="@+id/logo"/>-->
+    
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:id="@+id/myimagebutton"/>
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/edit_message"
         android:id="@+id/myedittext"
         android:hint="@string/hint_text" />
+
+
+
+
 
 </LinearLayout>
