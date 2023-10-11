@@ -2,6 +2,8 @@ package algonquin.cst2335.wang0467;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.content.Intent;
@@ -20,15 +22,25 @@ public class MainActivity extends AppCompatActivity {
         Button loginButton = findViewById(R.id.login_button);
         EditText emailEditText = findViewById(R.id.email_EditText);
 
+        SharedPreferences prefs = getSharedPreferences("MyData", Context.MODE_PRIVATE);
+        String emailAddress = prefs.getString("LoginName", "");
+        emailEditText.setText(emailAddress);
+
         loginButton.setOnClickListener(clk -> {
             Intent nextPage = new Intent(MainActivity.this, SecondActivity.class);
             nextPage.putExtra("EmailAddress", emailEditText.getText().toString());
             startActivity(nextPage);
+
+
         });
+
+
 
 
         Log.v( "MainActivity", "In onCreate() - Loading Widgets" );
         Log.d( TAG, "Message");
+
+
     }
 
     @Override
